@@ -186,8 +186,14 @@
 
 <footer>
   <div>© SAYDAM · GANJI: Live Saju Board</div>
-  <div><span data-i18n="contact"></span>: <a href="mailto:soydah@gmail.com">soydah@gmail.com</a></div>
-  <div class="biz" data-i18n="sibling"></div>
+  <div><span data-i18n="contact"></span>: <a href="mailto:support.saydam@gmail.com">support.saydam@gmail.com</a></div>
+  <div class="biz">
+    상호: 세이담 (SAYDAM) · 대표: 권대현 · 사업자등록번호: 883-56-00703 ·
+    통신판매업신고: 제2026-인천서해-0346호<br>
+    소재지: 인천광역시 서해구 청라한내로72번길 13,
+    청라 큐브시그니처 2차 오피스텔 비동 4층 407-66호<br>
+    <span data-i18n="sibling"></span>
+  </div>
 </footer>
 
 </div>
@@ -344,7 +350,7 @@ function apply(lang) {
   for (const el of document.querySelectorAll("[data-i18n-html]")) {
     const v = d[el.dataset.i18nHtml]; if (v !== undefined) el.innerHTML = v;
   }
-  const mail = "mailto:soydah@gmail.com?subject=" +
+  const mail = "mailto:support.saydam@gmail.com?subject=" +
     encodeURIComponent(d.mail_subject) + "&body=" + encodeURIComponent(d.mail_body);
   document.getElementById("buyBtn").href = mail;
   document.getElementById("buyBtn2").href = mail;
