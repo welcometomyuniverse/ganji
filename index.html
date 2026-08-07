@@ -42,28 +42,12 @@
   .btn.trial:hover { border-color:var(--gold); text-decoration:none; }
   .cta-note { font-size:13px; color:var(--dim); }
 
-  /* ── 판 데모 (제품과 같은 규칙으로 그린다) ── */
-  .board { position:relative; margin:34px auto 6px; padding:34px 10px 22px;
-           max-width:640px; background:#17191d; border:1px solid #23282e;
-           border-radius:16px; overflow:hidden; }
-  .pillars { display:flex; gap:clamp(14px,4vw,30px); justify-content:center;
-             text-shadow:var(--shadow); position:relative; z-index:2; }
-  .pillar { text-align:center; }
-  .plabel { font-size:12px; color:var(--dim); letter-spacing:.3em; text-indent:.3em;
-            margin-bottom:6px; }
-  .hanja { font-family:var(--hanja); font-size:clamp(46px,9vw,72px); line-height:1.08;
-           font-weight:600; }
-  .hanja span { display:block; -webkit-text-stroke:2.4px var(--edge); }
-  .reading { font-size:12px; color:var(--dim); margin-top:3px; letter-spacing:.15em; }
-  .wood  { color:#6fd68b; } .fire { color:#ff6f61; } .earth { color:#f2c14e; }
-  .metal { color:#f6f4ec; }
-  .water { color:#1d1d24; -webkit-text-stroke-color:rgba(250,248,240,.95);
-           text-shadow:0 0 3px rgba(255,255,255,.9), 0 1px 4px rgba(255,255,255,.55); }
-  .hanja .metal, .hanja .water { -webkit-text-stroke-width:1.8px; }
-  .board svg.arc { position:absolute; inset:0; width:100%; height:100%; z-index:1;
-                   pointer-events:none; }
-  .board .hint { text-align:center; font-size:12.5px; color:#7d8792; margin-top:14px;
-                 position:relative; z-index:2; }
+  /* ── 트레일러 — 제품 화면 그대로다 ── */
+  .demo { margin:34px auto 8px; max-width:820px; border-radius:16px;
+          overflow:hidden; border:1px solid #23282e; background:#17191d;
+          box-shadow:0 18px 50px rgba(0,0,0,.45); }
+  .demo video { display:block; width:100%; height:auto; }
+  .demo-hint { text-align:center; font-size:12.5px; color:#7d8792; }
 
   /* ── 본문 ── */
   section { padding:34px 0 6px; }
@@ -112,33 +96,11 @@
   <h1 data-i18n-html="h1"></h1>
   <p class="sub" data-i18n="tagline"></p>
 
-  <div class="board" aria-hidden="true">
-    <svg class="arc" viewBox="0 0 640 300" preserveAspectRatio="none">
-      <path d="M 175 200 Q 397 292 620 190" fill="none"
-            stroke="rgba(10,10,14,.75)" stroke-width="6" stroke-linecap="round"/>
-      <path d="M 175 200 Q 397 292 620 190" fill="none"
-            stroke="#ffd98a" stroke-width="3" stroke-linecap="round"/>
-      <text x="400" y="228" text-anchor="middle" fill="#ffd98a"
-            font-size="14" font-weight="700"
-            stroke="rgba(10,10,14,.85)" stroke-width="3" paint-order="stroke fill"
-            data-i18n="arc"></text>
-    </svg>
-    <div class="pillars">
-      <div class="pillar"><div class="plabel" data-i18n="p_hour"></div>
-        <div class="hanja"><span class="metal">庚</span><span class="fire">午</span></div>
-        <div class="reading" data-i18n="r1"></div></div>
-      <div class="pillar"><div class="plabel" data-i18n="p_day"></div>
-        <div class="hanja"><span class="wood">甲</span><span class="earth">戌</span></div>
-        <div class="reading" data-i18n="r2"></div></div>
-      <div class="pillar"><div class="plabel" data-i18n="p_month"></div>
-        <div class="hanja"><span class="water">壬</span><span class="metal">申</span></div>
-        <div class="reading" data-i18n="r3"></div></div>
-      <div class="pillar"><div class="plabel" data-i18n="p_year"></div>
-        <div class="hanja"><span class="earth">己</span><span class="earth">未</span></div>
-        <div class="reading" data-i18n="r4"></div></div>
-    </div>
-    <div class="hint" data-i18n="board_hint"></div>
+  <div class="demo">
+    <video id="trailer" poster="assets/poster.png" autoplay muted loop
+           playsinline preload="metadata"></video>
   </div>
+  <div class="demo-hint" data-i18n="board_hint"></div>
 
   <div class="cta">
     <a class="btn buy" id="buyBtn" href="#" data-i18n="btn_buy"></a>
@@ -206,7 +168,7 @@ ko: {
   p_hour:"시주", p_day:"일주", p_month:"월주", p_year:"년주",
   r1:"경오", r2:"갑술", r3:"임신", r4:"기미",
   arc:"갑기합 → 토",
-  board_hint:"실제 방송 화면과 같은 규칙으로 그린 판입니다 — 오행색, 자막 문법, 핀으로 그은 관계 선.",
+  board_hint:"실제 방송 화면을 그대로 녹화한 것입니다 — 편집도 합성도 없습니다.",
   btn_buy:"구매하기 — 129,000원", btn_trial:"무료 체험판 받기 (macOS·Windows)",
   cta_note:"체험판은 전 기능이 열려 있고 화면에 워터마크만 붙습니다. Windows 설치 시 SmartScreen 경고가 뜨면 '추가 정보 → 실행'을 누르세요.",
   why_h:"무료 만세력과 무엇이 다른가",
@@ -241,7 +203,7 @@ ja: {
   p_hour:"時柱", p_day:"日柱", p_month:"月柱", p_year:"年柱",
   r1:"こうご", r2:"こうじゅつ", r3:"じんしん", r4:"きび",
   arc:"甲己干合 → 土",
-  board_hint:"実際の配信画面と同じ規則で描いた盤です — 五行の色、字幕の文法、ピンで引いた作用の線。",
+  board_hint:"実際の配信画面をそのまま録画したものです — 編集も合成もありません。",
   btn_buy:"購入 — $99", btn_trial:"無料体験版 (macOS・Windows)",
   cta_note:"体験版は全機能が使えます。画面にウォーターマークが付くだけです。Windows で SmartScreen の警告が出たら「詳細情報 → 実行」を押してください。",
   why_h:"無料の万年暦と何が違うのか",
@@ -276,7 +238,7 @@ en: {
   p_hour:"Hour", p_day:"Day", p_month:"Month", p_year:"Year",
   r1:"gēngwǔ", r2:"jiǎxū", r3:"rénshēn", r4:"jǐwèi",
   arc:"Stem Combination → Earth",
-  board_hint:"Drawn with the same rules as the real broadcast board — element colors, subtitle-grade edges, a pinned relation line.",
+  board_hint:"A straight recording of the real broadcast view — no editing, no compositing.",
   btn_buy:"Buy — $99", btn_trial:"Free trial (macOS · Windows)",
   cta_note:"The trial is fully functional with a watermark on the broadcast view. If Windows SmartScreen warns on install, choose More info → Run anyway.",
   why_h:"What free almanac apps don't do",
@@ -311,7 +273,7 @@ en: {
   p_hour:"時柱", p_day:"日柱", p_month:"月柱", p_year:"年柱",
   r1:"庚午", r2:"甲戌", r3:"壬申", r4:"己未",
   arc:"天干五合 → 土",
-  board_hint:"與實際直播畫面同一套規則繪製 — 五行配色、字幕級描邊、以圖釘畫出的作用線。",
+  board_hint:"直接錄製實際直播畫面 — 未經剪輯與合成。",
   btn_buy:"購買 — $99", btn_trial:"免費試用版 (macOS・Windows)",
   cta_note:"試用版功能完整，僅在畫面上加浮水印。Windows 安裝時若出現 SmartScreen 警告，請按「其他資訊 → 仍要執行」。",
   why_h:"與免費萬年曆有何不同",
@@ -349,6 +311,11 @@ function apply(lang) {
   }
   for (const el of document.querySelectorAll("[data-i18n-html]")) {
     const v = d[el.dataset.i18nHtml]; if (v !== undefined) el.innerHTML = v;
+  }
+  const v = document.getElementById("trailer");
+  if (v) {
+    const want = lang === "ko" ? "assets/trailer_ko.mp4" : "assets/trailer_en.mp4";
+    if (!v.src.endsWith(want)) { v.src = want; v.load(); }
   }
   const mail = "mailto:support.saydam@gmail.com?subject=" +
     encodeURIComponent(d.mail_subject) + "&body=" + encodeURIComponent(d.mail_body);
